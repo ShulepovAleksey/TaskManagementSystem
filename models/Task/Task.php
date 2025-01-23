@@ -18,6 +18,7 @@ use yii\db\ActiveRecord;
 class Task extends ActiveRecord
 {
     private ?TaskState $taskState = null;
+
     /**
      * {@inheritdoc}
      */
@@ -76,5 +77,10 @@ class Task extends ActiveRecord
     {
         $this->taskState = $taskState;
         $this->status = $this->taskState->getStatusValue();
+    }
+
+    public function getTaskState(): TaskState
+    {
+        return $this->taskState;
     }
 }
