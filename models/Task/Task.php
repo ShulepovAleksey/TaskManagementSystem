@@ -3,6 +3,7 @@
 namespace app\models\Task;
 
 use app\models\Task\TaskState\TaskState;
+use yii\base\Model;
 use yii\db\ActiveRecord;
 
 /**
@@ -15,17 +16,15 @@ use yii\db\ActiveRecord;
  * @property string $created_at
  * @property string $updated_at
  */
-class Task extends ActiveRecord
+class Task extends Model
 {
-    private ?TaskState $taskState = null;
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'task';
-    }
+    public ?int $id = null;
+    public ?string $title = null;
+    public ?string $description = null;
+    public ?string $created_at = null;
+    public ?string $updated_at = null;
+    public ?string $status = null;
+    private ?TaskState $taskState;
 
     /**
      * {@inheritdoc}
