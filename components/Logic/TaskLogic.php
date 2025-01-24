@@ -12,6 +12,7 @@ use app\models\Task\TaskStatus;
 use components\AbstractProvider;
 use components\Database\DatabaseProvider;
 use http\Exception\RuntimeException;
+use Yii;
 use yii\data\DataProviderInterface;
 
 class TaskLogic
@@ -91,9 +92,8 @@ class TaskLogic
         };
     }
 
-    // TODO Избавиться от метода и зависимости от конкретной реализации, сделать через конфигурацию
     private static function getProvider(): AbstractProvider
     {
-        return new DatabaseProvider();
+        return Yii::$app->DataProvider;
     }
 }
