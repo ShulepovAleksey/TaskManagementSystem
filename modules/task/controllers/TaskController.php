@@ -1,12 +1,12 @@
 <?php
 
-namespace controllers;
+namespace Modules\Task\Controllers;
 
-use models\Task\Task;
-use models\Task\TaskSearch;
-use models\Task\TaskState\TaskStateNew;
-use RuntimeException;
 use components\Logic\TaskLogic;
+use Modules\Task\models\Task\Task;
+use Modules\Task\models\Task\TaskSearch;
+use Modules\Task\models\Task\TaskState\TaskStateNew;
+use RuntimeException;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;

@@ -2,12 +2,12 @@
 
 namespace tests\unit\models;
 
-use components\logic\TaskLogic;
-use models\Task\Task;
-use models\Task\TaskSearch;
-use models\Task\TaskState\TaskStateNew;
-use models\Task\TaskStatus;
 use Codeception\Test\Unit;
+use components\logic\TaskLogic;
+use Modules\Task\models\Task\Task;
+use Modules\Task\models\Task\TaskSearch;
+use Modules\Task\models\Task\TaskState\TaskStateNew;
+use Modules\Task\models\Task\TaskStatus;
 use RuntimeException;
 
 class TaskLogicTest extends Unit

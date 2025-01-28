@@ -1,8 +1,8 @@
 <?php
 
-namespace models\Task\TaskState;
+namespace Modules\Task\models\Task\TaskState;
 
-use models\Task\TaskStatus;
+use Modules\Task\models\Task\TaskStatus;
 
 interface TaskState
 {

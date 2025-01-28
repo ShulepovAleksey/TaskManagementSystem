@@ -54,6 +54,11 @@ $config = [
         ],
     ],
     'params' => $params,
+    'modules' => [
+        'task' => [
+            'class' => 'Modules\Task\TaskModule',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {

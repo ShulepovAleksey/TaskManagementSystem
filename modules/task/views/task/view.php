@@ -1,13 +1,13 @@
 <?php
 
-use models\Task\Task;
-use models\Task\TaskStatus;
+use Modules\Task\models\Task\Task;
+use Modules\Task\models\Task\TaskStatus;
 use yii\helpers\Html;
 use yii\web\YiiAsset;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var models\Task\Task $model */
+/** @var \Modules\Task\models\Task\Task $model */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Tasks', 'url' => ['index']];

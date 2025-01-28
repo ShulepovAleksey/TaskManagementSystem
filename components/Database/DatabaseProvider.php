@@ -2,15 +2,15 @@
 
 namespace components\Database;
 
-use models\Task\Task;
-use models\Task\TaskSearch;
 use components\AbstractProvider;
 use components\Database\models\TaskDB;
-use models\Task\TaskState\TaskState;
-use models\Task\TaskState\TaskStateFinished;
-use models\Task\TaskState\TaskStateInProcess;
-use models\Task\TaskState\TaskStateNew;
-use models\Task\TaskStatus;
+use Modules\Task\models\Task\Task;
+use Modules\Task\models\Task\TaskSearch;
+use Modules\Task\models\Task\TaskState\TaskState;
+use Modules\Task\models\Task\TaskState\TaskStateFinished;
+use Modules\Task\models\Task\TaskState\TaskStateInProcess;
+use Modules\Task\models\Task\TaskState\TaskStateNew;
+use Modules\Task\models\Task\TaskStatus;
 use RuntimeException;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;

@@ -1,8 +1,8 @@
 <?php
 
-namespace models\Task;
+namespace Modules\Task\models\Task;
 
-use models\Task\TaskState\TaskState;
+use Modules\Task\models\Task\TaskState\TaskState;
 use yii\base\Model;
 
 /**
