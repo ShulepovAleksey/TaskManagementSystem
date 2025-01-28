@@ -1,5 +1,6 @@
 <?php
 
+use models\Task\Task;
 use models\Task\TaskStatus;
 use yii\helpers\Html;
 use yii\web\YiiAsset;
@@ -50,7 +51,8 @@ YiiAsset::register($this);
             [
                 'attribute' => 'status',
                 'value' => function ($model) {
-                    return TaskStatus::getStatusById($model->status)->getStatusName();
+                    /** @var $model Task */
+                    return $model->getTaskState()->getStatus()->getStatusName();
                 }
             ],
             'created_at',

@@ -6,6 +6,12 @@ use models\Task\Task;
 use models\Task\TaskSearch;
 use components\AbstractProvider;
 use components\Database\models\TaskDB;
+use models\Task\TaskState\TaskState;
+use models\Task\TaskState\TaskStateFinished;
+use models\Task\TaskState\TaskStateInProcess;
+use models\Task\TaskState\TaskStateNew;
+use models\Task\TaskStatus;
+use RuntimeException;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\data\DataProviderInterface;
@@ -37,7 +43,7 @@ class DatabaseProvider implements AbstractProvider
         }
         $taskDB->title = $task->title;
         $taskDB->description = $task->description;
-        $taskDB->status = $task->getTaskState()?->getStatusValue();
+        $taskDB->status = $task->getTaskState()?->getStatus()->value;
         $taskDB->updated_at = new Expression('NOW()');
 
         $result = $taskDB->save();
@@ -67,7 +73,7 @@ class DatabaseProvider implements AbstractProvider
             // grid filtering conditions
             $query->andFilterWhere([
                 'id' => $taskSearch->id,
-                'status' => $taskSearch->getTaskState()?->getStatusValue(),
+                'status' => $taskSearch->getTaskState()?->getStatus()->value,
                 'created_at' => $taskSearch->created_at,
                 'updated_at' => $taskSearch->updated_at,
             ]);
@@ -78,9 +84,24 @@ class DatabaseProvider implements AbstractProvider
 
         $models = [];
         foreach ($dataProvider->getModels() as $taskDB) {
-            $models[] = new Task(null, $taskDB);
+            $taskState = DatabaseProvider::getTaskStateByStatusId($taskDB->status);
+            $models[] = new Task($taskState, $taskDB);
         }
 
         return new ArrayDataProvider(['allModels' => $models]);
+    }
+
+    /**
+     * @param int $statusId
+     * @return TaskState
+     */
+    private static function getTaskStateByStatusId(int $statusId): TaskState
+    {
+        return match ($statusId) {
+            TaskStatus::New->value => new TaskStateNew(),
+            TaskStatus::InProcess->value => new TaskStateInProcess(),
+            TaskStatus::Finished->value => new TaskStateFinished(),
+            default => throw new RuntimeException("Не удалось найти статус с идентификатором $statusId."),
+        };
     }
 }

@@ -35,7 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'status',
                 'value' => function ($model) {
-                    return TaskStatus::getStatusById($model->status)->getStatusName();
+                    /** @var $model Task */
+                    return $model->getTaskState()?->getStatus()->getStatusName();
                 }
             ],
             'created_at',

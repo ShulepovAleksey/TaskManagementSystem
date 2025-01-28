@@ -11,8 +11,8 @@ class TaskStateFinished implements TaskState
         return false;
     }
 
-    public function getStatusValue(): int
+    public function getStatus(): TaskStatus
     {
-        return TaskStatus::Finished->value;
+        return TaskStatus::Finished;
     }
 }

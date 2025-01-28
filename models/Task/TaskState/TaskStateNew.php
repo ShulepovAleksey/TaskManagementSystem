@@ -11,8 +11,8 @@ class TaskStateNew implements TaskState
         return $newStatusId == TaskStatus::InProcess->value;
     }
 
-    public function getStatusValue(): int
+    public function getStatus(): TaskStatus
     {
-        return TaskStatus::New->value;
+        return TaskStatus::New;
     }
 }

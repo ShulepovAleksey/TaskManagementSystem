@@ -75,7 +75,6 @@ class Task extends Model
     public function changeStatus(TaskState $taskState): void
     {
         $this->taskState = $taskState;
-        $this->status = $this->taskState->getStatusValue();
     }
 
     public function getTaskState(): ?TaskState
