@@ -23,6 +23,7 @@ class Task extends Model
     public ?string $description = null;
     public ?string $created_at = null;
     public ?string $updated_at = null;
+    // TODO Этот статус лишний, достаточно $taskState. Убрать
     public ?string $status = null;
     private ?TaskState $taskState;
 

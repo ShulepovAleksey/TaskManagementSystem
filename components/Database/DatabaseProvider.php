@@ -17,7 +17,10 @@ class DatabaseProvider implements AbstractProvider
     public function taskGetOne(int $id): ?Task
     {
         $taskDB = TaskDB::findOne($id);
-        return new Task(null, $taskDB);
+        if (!is_null($taskDB)) {
+            return new Task(null, $taskDB);
+        }
+        return null;
     }
 
     /**
@@ -60,22 +63,18 @@ class DatabaseProvider implements AbstractProvider
             'query' => $query,
         ]);
 
-        if (!$taskSearch->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
+        if ($taskSearch->validate()) {
+            // grid filtering conditions
+            $query->andFilterWhere([
+                'id' => $taskSearch->id,
+                'status' => $taskSearch->status,
+                'created_at' => $taskSearch->created_at,
+                'updated_at' => $taskSearch->updated_at,
+            ]);
+
+            $query->andFilterWhere(['ilike', 'title', $taskSearch->title])
+                ->andFilterWhere(['ilike', 'description', $taskSearch->description]);
         }
-
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $taskSearch->id,
-            'status' => $taskSearch->status,
-            'created_at' => $taskSearch->created_at,
-            'updated_at' => $taskSearch->updated_at,
-        ]);
-
-        $query->andFilterWhere(['ilike', 'title', $taskSearch->title])
-            ->andFilterWhere(['ilike', 'description', $taskSearch->description]);
 
         $models = [];
         foreach ($dataProvider->getModels() as $taskDB) {

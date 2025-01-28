@@ -10,8 +10,7 @@ use app\models\Task\TaskState\TaskStateInProcess;
 use app\models\Task\TaskState\TaskStateNew;
 use app\models\Task\TaskStatus;
 use components\AbstractProvider;
-use components\Database\DatabaseProvider;
-use http\Exception\RuntimeException;
+use RuntimeException;
 use Yii;
 use yii\data\DataProviderInterface;
 

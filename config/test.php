@@ -41,6 +41,9 @@ return [
             ],
             */
         ],
+        'DataProvider' => [
+            'class' => 'components\Database\DatabaseProvider',
+        ],
     ],
     'params' => $params,
 ];
