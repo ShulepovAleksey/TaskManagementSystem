@@ -73,7 +73,9 @@
     ],
     "autoload": {
         "psr-4": {
-            "components\\": "components/"
+            "components\\": "components/",
+            "controllers\\": "controllers/",
+            "models\\": "models/"
         }
     }
 }

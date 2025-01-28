@@ -1,14 +1,14 @@
 <?php
 
-namespace app\components\logic;
+namespace components\Logic;
 
-use app\models\Task\Task;
-use app\models\Task\TaskSearch;
-use app\models\Task\TaskState\TaskState;
-use app\models\Task\TaskState\TaskStateFinished;
-use app\models\Task\TaskState\TaskStateInProcess;
-use app\models\Task\TaskState\TaskStateNew;
-use app\models\Task\TaskStatus;
+use models\Task\Task;
+use models\Task\TaskSearch;
+use models\Task\TaskState\TaskState;
+use models\Task\TaskState\TaskStateFinished;
+use models\Task\TaskState\TaskStateInProcess;
+use models\Task\TaskState\TaskStateNew;
+use models\Task\TaskStatus;
 use components\AbstractProvider;
 use RuntimeException;
 use Yii;

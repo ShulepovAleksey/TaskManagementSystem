@@ -1,9 +1,9 @@
 <?php
 
-namespace app\models\Task;
+namespace models\Task;
 
 /**
- * TaskSearch represents the model behind the search form of `app\models\Task\Task`.
+ * TaskSearch represents the model behind the search form of `models\Task\Task`.
  */
 class TaskSearch extends Task
 {

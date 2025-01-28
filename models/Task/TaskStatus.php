@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\Task;
+namespace models\Task;
 
 enum TaskStatus: int
 {

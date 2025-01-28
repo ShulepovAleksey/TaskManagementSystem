@@ -1,10 +1,9 @@
 <?php
 
-namespace app\models\Task;
+namespace models\Task;
 
-use app\models\Task\TaskState\TaskState;
+use models\Task\TaskState\TaskState;
 use yii\base\Model;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "task".
@@ -79,7 +78,7 @@ class Task extends Model
         $this->status = $this->taskState->getStatusValue();
     }
 
-    public function getTaskState(): TaskState
+    public function getTaskState(): ?TaskState
     {
         return $this->taskState;
     }

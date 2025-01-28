@@ -2,11 +2,11 @@
 
 namespace tests\unit\models;
 
-use app\components\logic\TaskLogic;
-use app\models\Task\Task;
-use app\models\Task\TaskSearch;
-use app\models\Task\TaskState\TaskStateNew;
-use app\models\Task\TaskStatus;
+use components\logic\TaskLogic;
+use models\Task\Task;
+use models\Task\TaskSearch;
+use models\Task\TaskState\TaskStateNew;
+use models\Task\TaskStatus;
 use Codeception\Test\Unit;
 use RuntimeException;
 

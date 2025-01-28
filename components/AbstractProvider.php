@@ -2,8 +2,8 @@
 
 namespace components;
 
-use app\models\Task\Task;
-use app\models\Task\TaskSearch;
+use \models\Task\Task;
+use models\Task\TaskSearch;
 use yii\data\DataProviderInterface;
 
 interface AbstractProvider

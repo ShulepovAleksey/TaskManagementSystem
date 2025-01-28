@@ -2,8 +2,8 @@
 
 namespace components\Database;
 
-use app\models\Task\Task;
-use app\models\Task\TaskSearch;
+use models\Task\Task;
+use models\Task\TaskSearch;
 use components\AbstractProvider;
 use components\Database\models\TaskDB;
 use yii\data\ActiveDataProvider;
@@ -37,7 +37,7 @@ class DatabaseProvider implements AbstractProvider
         }
         $taskDB->title = $task->title;
         $taskDB->description = $task->description;
-        $taskDB->status = $task->getTaskState()->getStatusValue();
+        $taskDB->status = $task->getTaskState()?->getStatusValue();
         $taskDB->updated_at = new Expression('NOW()');
 
         $result = $taskDB->save();
@@ -67,7 +67,7 @@ class DatabaseProvider implements AbstractProvider
             // grid filtering conditions
             $query->andFilterWhere([
                 'id' => $taskSearch->id,
-                'status' => $taskSearch->getTaskState()->getStatusValue(),
+                'status' => $taskSearch->getTaskState()?->getStatusValue(),
                 'created_at' => $taskSearch->created_at,
                 'updated_at' => $taskSearch->updated_at,
             ]);

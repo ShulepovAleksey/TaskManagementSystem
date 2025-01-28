@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\Task\TaskState;
+namespace models\Task\TaskState;
 
 interface TaskState
 {

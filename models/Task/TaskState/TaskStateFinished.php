@@ -1,8 +1,8 @@
 <?php
 
-namespace app\models\Task\TaskState;
+namespace models\Task\TaskState;
 
-use app\models\Task\TaskStatus;
+use models\Task\TaskStatus;
 
 class TaskStateFinished implements TaskState
 {

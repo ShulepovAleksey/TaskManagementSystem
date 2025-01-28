@@ -2,7 +2,7 @@
 
 namespace tests\unit\models;
 
-use app\models\Task\Task;
+use models\Task\Task;
 use Codeception\Test\Unit;
 
 class TaskTest extends Unit

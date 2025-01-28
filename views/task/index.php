@@ -1,8 +1,8 @@
 <?php
 
-use app\models\Task\Task;
-use app\models\Task\TaskSearch;
-use app\models\Task\TaskStatus;
+use models\Task\Task;
+use models\Task\TaskSearch;
+use models\Task\TaskStatus;
 use yii\data\DataProviderInterface;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
