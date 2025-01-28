@@ -32,6 +32,5 @@
 
 # Тестирование
 
-Для запуска тестов нужно внутри контейнера (выполнить п.2 из раздела <strong>Установка</strong>) использовать команды
-> vendor/bin/codecept run tests/unit/models/TaskTest.php
-> vendor/bin/codecept run tests/unit/models/TaskLogicTest.php
+Для запуска тестов нужно внутри контейнера (выполнить п.2 из раздела <strong>Установка</strong>) использовать команду
+> vendor/bin/codecept run unit
