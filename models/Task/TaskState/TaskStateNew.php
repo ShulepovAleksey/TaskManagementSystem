@@ -2,7 +2,6 @@
 
 namespace app\models\Task\TaskState;
 
-use app\models\Task\Task;
 use app\models\Task\TaskStatus;
 
 class TaskStateNew implements TaskState

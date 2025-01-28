@@ -67,7 +67,7 @@ class DatabaseProvider implements AbstractProvider
             // grid filtering conditions
             $query->andFilterWhere([
                 'id' => $taskSearch->id,
-                'status' => $taskSearch->status,
+                'status' => $taskSearch->getTaskState()->getStatusValue(),
                 'created_at' => $taskSearch->created_at,
                 'updated_at' => $taskSearch->updated_at,
             ]);

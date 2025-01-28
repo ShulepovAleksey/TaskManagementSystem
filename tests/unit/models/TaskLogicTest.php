@@ -52,7 +52,7 @@ class TaskLogicTest extends Unit
     {
         TaskLogic::changeStatus(self::ID, TaskStatus::InProcess->value);
         $task = TaskLogic::findModel(self::ID);
-        $this->assertEquals(TaskStatus::InProcess->value, $task->status);
+        $this->assertEquals(TaskStatus::InProcess->value, $task->getTaskState()->getStatusValue());
     }
 
     public function testSearch()
