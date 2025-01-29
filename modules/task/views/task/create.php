@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var \Modules\Task\models\Task\Task $model */
 
 $this->title = 'Добавить задачу';
-$this->params['breadcrumbs'][] = ['label' => 'Tasks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Задачи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-create">
