@@ -12,7 +12,7 @@ use yii\helpers\Url;
 /** @var TaskSearch $searchModel */
 /** @var DataProviderInterface $dataProvider */
 
-$this->title = 'Tasks';
+$this->title = 'Задачи';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-index">
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить задачу', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
