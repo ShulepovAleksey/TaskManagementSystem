@@ -74,7 +74,9 @@
     "autoload": {
         "psr-4": {
             "components\\": "components/",
-            "Modules\\": "modules/"
+            "Modules\\": "modules/",
+            "models\\": "models/",
+            "controllers\\": "controllers/"
         }
     }
 }
