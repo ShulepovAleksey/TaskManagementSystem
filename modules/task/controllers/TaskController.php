@@ -2,7 +2,7 @@
 
 namespace modules\task\controllers;
 
-use components\Logic\TaskLogic;
+use components\logic\TaskLogic;
 use modules\task\models\Task\Task;
 use modules\task\models\Task\TaskSearch;
 use modules\task\models\Task\TaskState\TaskStateNew;

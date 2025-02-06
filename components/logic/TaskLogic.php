@@ -1,6 +1,6 @@
 <?php
 
-namespace components\Logic;
+namespace components\logic;
 
 use components\AbstractProvider;
 use modules\task\models\Task\Task;
