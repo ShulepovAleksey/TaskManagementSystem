@@ -44,7 +44,8 @@ class TaskController extends Controller
     {
         $searchModel = new TaskSearch();
         $searchModel->load(Yii::$app->request->queryParams);
-        $dataProvider = TaskLogic::search($searchModel);
+        $taskLogic = TaskLogic::getInstance();
+        $dataProvider = $taskLogic->search($searchModel);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -59,8 +60,9 @@ class TaskController extends Controller
      */
     public function actionView($id)
     {
+        $taskLogic = TaskLogic::getInstance();
         return $this->render('view', [
-            'model' => TaskLogic::findModel($id),
+            'model' => $taskLogic->findModel($id),
         ]);
     }
 
@@ -74,7 +76,8 @@ class TaskController extends Controller
         $model = new Task(new TaskStateNew());
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && TaskLogic::save($model)) {
+            $taskLogic = TaskLogic::getInstance();
+            if ($model->load($this->request->post()) && $taskLogic->save($model)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
@@ -92,9 +95,10 @@ class TaskController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = TaskLogic::findModel($id);
+        $taskLogic = TaskLogic::getInstance();
+        $model = $taskLogic->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && TaskLogic::save($model)) {
+        if ($this->request->isPost && $model->load($this->request->post()) && $taskLogic->save($model)) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -111,7 +115,8 @@ class TaskController extends Controller
      */
     public function actionDelete($id)
     {
-        TaskLogic::delete($id);
+        $taskLogic = TaskLogic::getInstance();
+        $taskLogic->delete($id);
 
         return $this->redirect(['index']);
     }
@@ -126,7 +131,8 @@ class TaskController extends Controller
      */
     public function actionChangeStatus(int $id, int $newStatusId): Response
     {
-        TaskLogic::changeStatus($id, $newStatusId);
+        $taskLogic = TaskLogic::getInstance();
+        $taskLogic->changeStatus($id, $newStatusId);
 
         return $this->redirect(['view', 'id' => $id]);
     }

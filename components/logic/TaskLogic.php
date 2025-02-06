@@ -16,17 +16,18 @@ use yii\data\DataProviderInterface;
 
 class TaskLogic
 {
+    private static TaskLogic $instance;
+    private AbstractProvider $taskProvider;
+    
     /**
      * @param int $id
      * @return Task
      */
-    public static function findModel(int $id): Task
+    public function findModel(int $id): Task
     {
-        $provider = TaskLogic::getProvider();
-
-        $model = $provider->taskGetOne($id);
+        $model = $this->taskProvider->taskGetOne($id);
         if (!is_null($model)) {
-            $taskState = TaskLogic::getTaskStateByStatusId($model->status);
+            $taskState = $this->getTaskStateByStatusId($model->status);
             $model->changeStatus($taskState);
 
             return $model;
@@ -35,23 +36,20 @@ class TaskLogic
         throw new RuntimeException("Не удалось найти задачу с идентификатором $id");
     }
 
-    public static function save(Task &$task): bool
+    public function save(Task &$task): bool
     {
-        $provider = TaskLogic::getProvider();
-        return $provider->save($task);
+        return $this->taskProvider->save($task);
     }
 
-    public static function delete(int $id): void
+    public function delete(int $id): void
     {
-        $provider = TaskLogic::getProvider();
-        $task = TaskLogic::findModel($id);
-        $provider->delete($task);
+        $task = $this->findModel($id);
+        $this->taskProvider->delete($task);
     }
 
-    public static function changeStatus(int $id, int $newStatusId): void
+    public function changeStatus(int $id, int $newStatusId): void
     {
-        $provider = TaskLogic::getProvider();
-        $task = TaskLogic::findModel($id);
+        $task = $this->findModel($id);
 
         if (!$task->canChangeStatus($newStatusId)) {
             throw new RuntimeException(
@@ -59,29 +57,28 @@ class TaskLogic
             );
         }
 
-        $taskState = TaskLogic::getTaskStateByStatusId($newStatusId);
+        $taskState = $this->getTaskStateByStatusId($newStatusId);
 
         $task->changeStatus($taskState);
-        if (!$provider->save($task)) {
+        if (!$this->taskProvider->save($task)) {
             throw new RuntimeException("Не удалось сохранить задачу с идентификатором $id.");
-        };
+        }
     }
 
     /**
      * @param TaskSearch $taskSearch
      * @return DataProviderInterface
      */
-    public static function search(TaskSearch $taskSearch): DataProviderInterface
+    public function search(TaskSearch $taskSearch): DataProviderInterface
     {
-        $provider = TaskLogic::getProvider();
-        return $provider->search($taskSearch);
+        return $this->taskProvider->search($taskSearch);
     }
 
     /**
      * @param int $newStatusId
      * @return TaskState
      */
-    private static function getTaskStateByStatusId(int $newStatusId): TaskState
+    private function getTaskStateByStatusId(int $newStatusId): TaskState
     {
         return match ($newStatusId) {
             TaskStatus::New->value => new TaskStateNew(),
@@ -91,8 +88,23 @@ class TaskLogic
         };
     }
 
-    private static function getProvider(): AbstractProvider
+    /**
+     * @return TaskLogic
+     */
+    public static function getInstance(): TaskLogic
     {
-        return Yii::$app->DataProvider;
+        if (!isset($instance)) {
+            TaskLogic::$instance = new TaskLogic(Yii::$app->DataProvider);
+        }
+        
+        return TaskLogic::$instance;
+    }
+
+    /**
+     * @param AbstractProvider $taskProvider
+     */
+    private function __construct(AbstractProvider $taskProvider)
+    {
+        $this->taskProvider = $taskProvider;
     }
 }
