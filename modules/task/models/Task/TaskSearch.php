@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Task\models\Task;
+namespace modules\task\models\Task;
 
 /**
  * TaskSearch represents the model behind the search form of `models\Task\Task`.

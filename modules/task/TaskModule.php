@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Task;
+namespace modules\task;
 
 use yii\base\Module;
 
 class TaskModule extends Module
 {
-    public $controllerNamespace = 'Modules\Task\Controllers';
+    public $controllerNamespace = 'modules\task\controllers';
 }

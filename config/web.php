@@ -57,7 +57,7 @@ $config = [
     ],
     'params' => $params,
     'modules' => [
-        'task' => 'Modules\Task\TaskModule',
+        'task' => 'modules\task\TaskModule',
     ],
 ];
 

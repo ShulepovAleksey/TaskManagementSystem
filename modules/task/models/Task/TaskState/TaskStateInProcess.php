@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Task\models\Task\TaskState;
+namespace modules\task\models\Task\TaskState;
 
-use Modules\Task\models\Task\TaskStatus;
+use modules\task\models\Task\TaskStatus;
 
 class TaskStateInProcess implements TaskState
 {

@@ -3,7 +3,7 @@
 namespace tests\unit\models;
 
 use Codeception\Test\Unit;
-use Modules\Task\models\Task\Task;
+use modules\task\models\Task\Task;
 
 class TaskTest extends Unit
 {
