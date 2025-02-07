@@ -38,13 +38,10 @@ class DatabaseProvider implements AbstractProvider
         if (!is_null($task->id)) {
             $taskDB->id = $task->id;
             $taskDB->isNewRecord = false;
-        } else {
-            $taskDB->created_at = new Expression('NOW()');
         }
         $taskDB->title = $task->title;
         $taskDB->description = $task->description;
         $taskDB->status = $task->getTaskState()?->getStatus()->value;
-        $taskDB->updated_at = new Expression('NOW()');
 
         $result = $taskDB->save();
         if ($result) {
